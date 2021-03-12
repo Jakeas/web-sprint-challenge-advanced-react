@@ -15,13 +15,24 @@ const initialValue = {
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
 const CheckoutForm = (props) => {
+ 
 
   const [
+    // {firstName, lastName, address, city, state, zip},
     showSuccessMessage, setShowSuccessMessage, 
     values,
-    handleChanges 
+    setValues, 
     ] = useForm(initialValue)
+
     console.log({values})
+
+    const handleChanges = (e) => {
+      setValues({ 
+          ...values, 
+          [e.target.name]: 
+          e.target.value });
+    }; console.log({values})
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowSuccessMessage(true);
